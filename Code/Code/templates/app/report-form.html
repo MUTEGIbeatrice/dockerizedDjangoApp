@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .light {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #ddd;
+      position: relative;
+      margin: 50px auto;
+    }
+    
+    .light::before {
+      content: "";
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      top: 70px;
+      left: 70px;
+    }
+    
+    .light.on::before {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <!-- The light component -->
+  <div class="light" id="light"></div>
+  
+  <!-- Script to toggle the light on/off -->
+  <script>
+    const light = document.getElementById("light");
+    light.addEventListener("click", function() {
+      light.classList.toggle("on");
+    });
+  </script>
+</body>
+</html>

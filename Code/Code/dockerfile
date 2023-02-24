@@ -1,0 +1,37 @@
+FROM python:3.11
+
+# setup environment variable  
+#ENV code=/home/app/webapp  
+
+# set work directory  
+#RUN mkdir -p /code  
+
+# where your code lives  
+#WORKDIR /code  
+
+# set environment variables  
+#ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED=1  
+
+# install dependencies  
+#RUN pip install pipenv
+#RUN pipenv install django
+RUN pip install --upgrade pip
+RUN pip install djangorestframework
+RUN python -m pip install --upgrade setuptools pip wheel
+
+# copy whole project to your docker home directory. 
+COPY . .
+
+COPY req.txt .
+
+
+
+# run this command to install all dependencies  
+RUN pip install -r req.txt
+
+# port where the Django app runs  
+#EXPOSE 8000  
+
+# start server  
+#CMD python manage.py runserver  
